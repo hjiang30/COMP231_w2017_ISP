@@ -1,0 +1,31 @@
+{
+  "name": "comp308-w2017-assignment1",
+  "description": "assignment 1 Portfolio",
+  "main": "server.js",
+  "authors": [
+    "Amandeep Aujla"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "assign1",
+    "expressJs",
+    "NodeJs",
+    "Clould",
+    "hosting"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/Scripts/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.2.4",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  }
+}

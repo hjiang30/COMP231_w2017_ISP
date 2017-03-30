@@ -1,0 +1,56 @@
+{
+  "name": "comp231-w2017-intelligentstockpickerapp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.5.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "compression": "^1.6.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "debug": "~2.6.0",
+    "ejs": "~2.5.5",
+    "express": "~4.14.1",
+    "express-session": "^1.15.1",
+    "method": "^2.0.0",
+    "mongoose": "^4.8.6",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "serve-favicon": "~2.3.2",
+    "session": "^0.1.0"
+  },
+  "description": "assignment 1 Portfolio",
+  "main": "server.js",
+  "devDependencies": {
+    "@types/connect-flash": "0.0.31",
+    "@types/express-session": "0.0.32",
+    "@types/passport": "^0.3.3",
+    "@types/passport-local": "^1.0.29",
+    "@types/passport-local-mongoose": "^4.0.8"
+  },
+  "keywords": [
+    "assign1",
+    "expressJs",
+    "NodeJs",
+    "Clould",
+    "hosting"
+  ],
+  "author": "Amandeep Aujla",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaujla55/COMP308-w2017-Assignment2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aaujla55/COMP308-w2017-Assignment2/issues"
+  },
+  "homepage": "https://github.com/aaujla55/COMP308-w2017-Assignment2#readme"
+}
