@@ -41,14 +41,26 @@
            <% include ../partials/header.ejs %>
           <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
+            <ul class="nav navbar-nav side-nav">
+             <% if(typeof displayName == 'string' && displayName) { %> 
+               <li>
+                    <a href="/profile"><i class="fa fa-fw fa-dashboard"></i>My Profile</a>
+                    </li>
+                     <li>
+                        <a href="/"><i class="fa fa-fw fa-dashboard"></i>Home</a>
+                    </li>
+                    <li class="active">
+                        <a href="/aboutUs"><i class="fa fa-fw fa-dashboard"></i>About Us</a>
+                    </li>
+                <% } else { %>
                     <li>
                         <a href="/"><i class="fa fa-fw fa-dashboard"></i>Home</a>
                     </li>
                     <li class="active">
                         <a href="/aboutUs"><i class="fa fa-fw fa-dashboard"></i>About Us</a>
                     </li>
-                   
+                <% } %>
+               
                 </ul>
             </div>
             

@@ -31,7 +31,6 @@ db.once('open', () => {
 
 // define routers
 var index = require('./routes/index');
-let businessContacts = require('./routes/businessContacts'); // routes for businessContacts
 
 var app = express();
 
@@ -61,7 +60,7 @@ app.use(passport.session());
 
 // route redirects
 app.use('/', index);
-app.use('/businessContacts', businessContacts);
+
 
 // Passport User Configuration
 let UserModel = require('./models/users');

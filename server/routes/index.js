@@ -10,9 +10,6 @@ let passport = require('passport');
 let UserModel = require('../models/users');
 let User = UserModel.User; // alias for User Model - User object
 
-// define the game model
-let businessContact = require('../models/businessContacts');
-
 // create a function to check if the user is authenticated
 function requireAuth(req, res, next) {
   // check if the user is logged in
@@ -26,7 +23,6 @@ function requireAuth(req, res, next) {
 router.get('/', function(req, res, next) {
   res.render('content/index', { 
     title: 'Home',
-    businessContacts : '',
     displayName: req.user ? req.user.displayName : ''
   });
 });
@@ -36,18 +32,16 @@ router.get('/aboutUs', function(req, res, next)
 {
  res.render('content/aboutUs',{
    title: 'AboutUs',
-   businessContacts : '',
    displayName: req.user ? req.user.displayName : ''
   });
 });
 
 
 /* GET projects page */
-router.get('/profile', function(req, res, next)
+router.get('/profile',requireAuth, function(req, res, next)
 {
 res.render('content/profile', {
   title: 'Profile',
-  businessContacts : '',
   displayName: req.user ? req.user.displayName : ''
 });
 });
@@ -60,19 +54,18 @@ router.get('/login', (req, res, next)=>{
     // render the login page
     res.render('auth/login', {
       title: "Login",
-      businessContacts: '',
       messages: req.flash('loginMessage'),
       displayName: req.user ? req.user.displayName : ''
     });
     return;
   } else {
-    return res.redirect('/businessContacts'); // redirect to businessContacts list
+    return res.redirect('/'); // redirect to businessContacts list
   }
 });
 
 // POST /login - process the login attempt
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/businessContacts',
+  successRedirect: '/profile',
   failureRedirect: '/login',
   failureFlash: 'bad login'
 }));
@@ -84,13 +77,12 @@ router.get('/register', (req, res, next)=>{
     // render the registration page
       res.render('auth/register', {
       title: "Register",
-      businessContacts: '',
       messages: req.flash('registerMessage'),
       displayName: req.user ? req.user.displayName : ''
     });
     return;
   } else {
-    return res.redirect('/businessContacts'); // redirect to businessContacts list
+    return res.redirect('/'); 
   }
 });
 
@@ -112,14 +104,13 @@ router.post('/register', (req, res, next)=>{
         }
         return res.render('auth/register', {
           title: "Register",
-          businessContacts: '',
           messages: req.flash('registerMessage'),
           displayName: req.user ? req.user.displayName : ''
         });
       }
       // if registration is successful
       return passport.authenticate('local')(req, res, ()=>{
-        res.redirect('/businessContacts');
+        res.redirect('/profile');
       });
     });
 });
