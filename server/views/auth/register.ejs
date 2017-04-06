@@ -41,7 +41,9 @@
                 </nav>
             <!--/Navigation-->
             <div class="container-fluid">
-
+            <% if (messages.length > 0) { %>
+                    <div class="alert alert-danger"><%= messages %></div>
+                <% } %>
                 <!-- Page Heading -->
                 <div class="row">
             <div class="col-md-offset-4 col-md-4">
