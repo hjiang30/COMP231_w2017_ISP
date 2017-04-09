@@ -80,7 +80,7 @@
                 </div>
                 <!-- /.row -->
                 
-                <form>
+                <form method="post">
                     <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-primary">
@@ -95,16 +95,16 @@
                                     </div>
                                 </div>
                             </div>
-                             <a href="#">
+                             <a href="/aboutUs">
                                 <div class="panel-footer">
                                     <span class="pull-left">Click for more info</span>
-                                    <span class="pull-right"><input type="checkbox" id="" value=""></span>
+                                    <span class="pull-right"><input type="checkbox" id="" value="" name="f1"></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg- col-md-6">
+                    <div class="col-lg-3 col-md-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">
@@ -112,15 +112,15 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">Bolling Band</div>
-                                        <div>Indicator</div>
+                                        <div class="huge">Bands</div>
+                                        <div>Bollinger Bands</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="/aboutUs">
                                 <div class="panel-footer">
                                     <span class="pull-left">Click for more info</span>
-                                    <span class="pull-right"><input type="checkbox" id="" value=""></span>
+                                    <span class="pull-right"><input type="checkbox" id="f2" value="" name="f2"></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -139,21 +139,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="/aboutUs">
                                 <div class="panel-footer">
                                     <span class="pull-left">Click for more info</span>
-                                    <span class="pull-right"><input type="checkbox" id="" value=""></i></span>
+                                    <span class="pull-right"><input type="checkbox" id="" value="" name="f3"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
                         </div>
                     </div>
+                   
                     <div class="col-lg-3 col-md-6">
-                       
-                       <input class="panel panel-red" type="button" value="Submit">
-                       
-                        </div>
-                    <!--<div class="col-lg-3 col-md-6">
                         <div class="panel panel-red">
                             <div class="panel-heading">
                                 <div class="row">
@@ -167,18 +163,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="/aboutUs">
                                 <div class="panel-footer">
                                     <span class="pull-left">Click button for Filter4</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <span class="pull-right"><input type="checkbox" id="" value="" name="f4"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
                         </div>
-                    </div>-->
+                    </div>
+                    
                     
                 </div>
                 <!-- /.row -->
+                <div class="row">
+                 <div class="col-lg-3 col-md-6">
+                       
+                       <input class="btn btn-danger" type="button" value="Submit">
+                       
+                        </div>
+                </div>
                 </form>
 
                    <div class="row">
@@ -188,55 +192,50 @@
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Page</th>
-                                        <th>Visits</th>
-                                        <th>% New Visits</th>
-                                        <th>Revenue</th>
+                                        <th>Symbol</th>
+                                        <th>Company Name</th>
+                                        <th>Price</th>
+                                        <th>Percentage</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="active">
-                                        <td>/index.html</td>
-                                        <td>1265</td>
-                                        <td>32.3%</td>
-                                        <td>$321.33</td>
+                                        <td>GOOG</td>
+                                        <td>Google. inc</td>
+                                        <td>$500</td>
+                                        <td>13%</td>
                                     </tr>
                                     <tr class="success">
-                                        <td>/about.html</td>
-                                        <td>261</td>
-                                        <td>33.3%</td>
-                                        <td>$234.12</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     <tr class="warning">
-                                        <td>/sales.html</td>
-                                        <td>665</td>
-                                        <td>21.3%</td>
-                                        <td>$16.34</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     <tr class="danger">
-                                        <td>/blog.html</td>
-                                        <td>9516</td>
-                                        <td>89.3%</td>
-                                        <td>$1644.43</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
-                                        <td>/404.html</td>
-                                        <td>23</td>
-                                        <td>34.3%</td>
-                                        <td>$23.52</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
-                                        <td>/services.html</td>
-                                        <td>421</td>
-                                        <td>60.3%</td>
-                                        <td>$724.32</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
-                                    <tr>
-                                        <td>/blog/post.html</td>
-                                        <td>1233</td>
-                                        <td>93.2%</td>
-                                        <td>$126.34</td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -251,6 +250,38 @@
                         </div>
                     </div>
                 </div>
+                    
+                    <div class="row">
+                     <div class="col-lg-12">
+                    <label>Start Date</label>
+                   <input type="date" name="">
+                   
+                    <label>End Date</label>
+                   <input type="date" name="">
+
+                    <label>Initial Capital</label>
+                     <input type="" class="" id="" placeholder="">
+
+                        <label>Position</label>
+                        <select>
+                        <option>10%</option>
+                        <option>20%</option>
+                        <option>30%</option>
+                        </select>
+
+                    
+                        <select>
+                        <option>Share Weighted</option>
+                        <option>Money Weighted</option>
+                        </select>
+                         <button type="button" class="btn btn-danger">Submit</button>
+                         <br>
+                         </div>
+                          <!-- /.row -->
+                          <br>
+                          </div>  
+                
+
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -265,11 +296,12 @@
                     </div>
                 </div>
                 <!-- /.row -->
-
+                 
                   
                 <!-- /.row -->
 
             </div>
+           
             <!-- /.container-fluid -->
 
         </div>

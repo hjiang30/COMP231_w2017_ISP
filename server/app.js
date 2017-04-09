@@ -60,7 +60,7 @@ app.use(passport.session());
 
 // route redirects
 app.use('/', index);
-
+app.use(bodyParser.json());
 
 // Passport User Configuration
 let UserModel = require('./models/users');

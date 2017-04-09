@@ -3,8 +3,11 @@
 // modules required for routing
 var express = require('express');
 var router = express.Router();
+var Client = require('node-rest-client').Client;
 let mongoose = require('mongoose');
 let passport = require('passport');
+var client = new Client();
+
 
 // define the user model
 let UserModel = require('../models/users');
@@ -120,5 +123,25 @@ router.get('/logout', (req, res, next)=>{
   req.logout();
   res.redirect('/'); // redirect to the home page
 });
+
+
+
+//var args = {
+   // dta: {"f1":1,"f2":0,"f3":0,"f4":1},
+    //headers: { "Content-Type": "application/json" }
+//};
+
+//router.post("http://127.0.0.1:8080/select", args, function (dta, response){
+// set content-type header and data as json in args parameter 
+
+//Console.log("connection establised")
+// parsed response body as js object 
+    //the data must be the jsonarray, such as [“GOOG”,”APPL”]
+    //the display method is used for you to update the table   behind the filters, please implement it.at first, you can use mock data such as :
+   //let data = ["GOOG","APPL"]
+  // display(data);
+
+//});
+
 
 module.exports = router;
