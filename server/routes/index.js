@@ -126,6 +126,11 @@ router.get('/logout', (req, res, next)=>{
 
 router.post('/simulate',(req,res,next)=>{
 console.log("simulate called!");
+console.log(req.body.startDate);
+console.log(req.body.endDate);
+console.log(req.body.capital);
+console.log(req.body.position);
+console.log(req.body.weight);
 res.redirect('/profile');
 
 });

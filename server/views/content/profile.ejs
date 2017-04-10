@@ -179,7 +179,7 @@
                 <div class="row">
                  <div class="col-lg-3 col-md-6">
                        
-                       <button value="Submit" onclick="document.getElementById("form1").submit()"></button>
+                       <button value="Submit" onclick="document.getElementById("form1").submit()">submit</button>
 
                        
                         </div>
@@ -264,22 +264,21 @@
                      <input type="" class="" id="" placeholder="1000,000" name="capital">
 
                         <label>Position</label>
-                        <select>
-                        <option>10%</option>
-                        <option>20%</option>
-                        <option>30%</option>
+                        <select name="position">
+                        <option value="0.1">10%</option>
+                        <option value="0.2">20%</option>
+                        <option value="0.3">30%</option>
                         </select>
 
                     
-                        <select>
-                        <option>Share Weighted</option>
-                        <option>Money Weighted</option>
+                        <select name="weight">
+                        <option value="1">Share Weighted</option>
+                        <option value="2">Money Weighted</option>
                         </select>
-                         <button type="button" class="btn btn-danger" onclick="document.getElementById("form2").submit()">Submit</button>
-                         <br>
+                         <!--button type="button" class="btn btn-danger" onclick="document.getElementById("form2").submit()">Submit</button>-->
+			 <button value="Submit" onclick="document.getElementById("form2").submit()">simulate</button>
                          </div>
                           <!-- /.row -->
-                          <br>
                           </div> 
 		</form> 
                 
