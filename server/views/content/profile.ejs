@@ -80,7 +80,7 @@
                 </div>
                 <!-- /.row -->
                 
-                <form method="post">
+                <form action="http://127.0.0.1:3000/select" method="post" id="form1">
                     <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-primary">
@@ -98,7 +98,7 @@
                              <a href="/aboutUs">
                                 <div class="panel-footer">
                                     <span class="pull-left">Click for more info</span>
-                                    <span class="pull-right"><input type="checkbox" id="" value="" name="f1"></span>
+                                    <span class="pull-right"><input type="checkbox" id="" value="f1" name="filter"></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -120,7 +120,7 @@
                             <a href="/aboutUs">
                                 <div class="panel-footer">
                                     <span class="pull-left">Click for more info</span>
-                                    <span class="pull-right"><input type="checkbox" id="f2" value="" name="f2"></span>
+                                    <span class="pull-right"><input type="checkbox" id="f2" value="f2" name="filter"></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -142,7 +142,7 @@
                             <a href="/aboutUs">
                                 <div class="panel-footer">
                                     <span class="pull-left">Click for more info</span>
-                                    <span class="pull-right"><input type="checkbox" id="" value="" name="f3"></i></span>
+                                    <span class="pull-right"><input type="checkbox" id="" value="f3" name="filter"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -166,7 +166,7 @@
                             <a href="/aboutUs">
                                 <div class="panel-footer">
                                     <span class="pull-left">Click button for Filter4</span>
-                                    <span class="pull-right"><input type="checkbox" id="" value="" name="f4"></i></span>
+                                    <span class="pull-right"><input type="checkbox" id="" value="f4" name="filter"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -179,7 +179,8 @@
                 <div class="row">
                  <div class="col-lg-3 col-md-6">
                        
-                       <input class="btn btn-danger" type="button" value="Submit">
+                       <button value="Submit" onclick="document.getElementById("form1").submit()"></button>
+
                        
                         </div>
                 </div>
@@ -250,17 +251,17 @@
                         </div>
                     </div>
                 </div>
-                    
+                    <form action="http://127.0.0.1:3000/simulate" method="post" id="form2">
                     <div class="row">
                      <div class="col-lg-12">
                     <label>Start Date</label>
-                   <input type="date" name="">
+                   <input type="date" name="startDate">
                    
                     <label>End Date</label>
-                   <input type="date" name="">
+                   <input type="date" name="endDate">
 
                     <label>Initial Capital</label>
-                     <input type="" class="" id="" placeholder="">
+                     <input type="" class="" id="" placeholder="1000,000" name="capital">
 
                         <label>Position</label>
                         <select>
@@ -274,12 +275,13 @@
                         <option>Share Weighted</option>
                         <option>Money Weighted</option>
                         </select>
-                         <button type="button" class="btn btn-danger">Submit</button>
+                         <button type="button" class="btn btn-danger" onclick="document.getElementById("form2").submit()">Submit</button>
                          <br>
                          </div>
                           <!-- /.row -->
                           <br>
-                          </div>  
+                          </div> 
+		</form> 
                 
 
 

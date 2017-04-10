@@ -124,6 +124,12 @@ router.get('/logout', (req, res, next)=>{
   res.redirect('/'); // redirect to the home page
 });
 
+router.post('/simulate',(req,res,next)=>{
+console.log("simulate called!");
+res.redirect('/profile');
+
+});
+
 
 
 //var args = {
