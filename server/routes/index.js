@@ -45,6 +45,7 @@ router.get('/profile',requireAuth, function(req, res, next)
 {
 res.render('content/profile', {
   title: 'Profile',
+  data:'',
   displayName: req.user ? req.user.displayName : ''
 });
 });
@@ -124,6 +125,61 @@ router.get('/logout', (req, res, next)=>{
   res.redirect('/'); // redirect to the home page
 });
 
+
+router.post('/select',(req,res,next)=>{
+
+var choice = req.body.filter;
+
+console.log(req.body.filter);
+
+var args = {
+    data: { 'f1':0,'f2':0,'f3':0,'f4':0},
+    headers: { "Content-Type": "application/json" }
+};
+
+if (choice.length>0)
+{
+	if(choice.indexOf('f1') > -1)
+	 args["data"]['f1']=1;	
+	if(choice.indexOf('f2') > -1)
+         args["data"]['f2']=1;
+	 if(choice.indexOf('f3') > -1)
+         args["data"]['f3']=1;
+	 if(choice.indexOf('f4') > -1)
+         args["data"]['f4']=1;
+
+
+	
+}
+ 
+// 
+client.post("http://127.0.0.1:8080/select", args, function (data, response) {
+    // parsed response body as js object 
+    //the data must be the jsonarray, such as [“GOOG”,”APPL”]
+    //the display method is used for you to update the table   behind the filters, please implement it.at first, you can use mock data such as :
+//let data = [“GOOG”,”APPL”]
+  //  display(data);
+console.log(data);
+//var jsonContent = JSON.parse(data);
+//console.log(jsonContent);
+//console.log(jsonContent.length);
+res.render('content/profile',{
+      title: "Profile",
+      //messages: req.flash('registerMessage'),
+      data:makeData(data),
+      displayName: req.user ? req.user.displayName : ''
+    });
+
+
+});
+
+
+
+});
+
+
+
+
 router.post('/simulate',(req,res,next)=>{
 console.log("simulate called!");
 console.log(req.body.startDate);
@@ -153,6 +209,88 @@ res.redirect('/profile');
   // display(data);
 
 //});
+function makeData(symbols) {
+var dic = {};
+dic.STO={symbol:"STO",name:"STATOIL ASA-ADR",price:"16.93",percentage:"0.53%"};
+dic.XOM={symbol:"XOM",name:"EXXON MOBIL CORP",price:"81.67",percentage:"0.79%"};
+dic.CVX={symbol:"CVX",name:"CHEVRON CORP",price:"110.04",percentage:"0.39%"};
+dic.BP={symbol:"BP",name:"BP PLC-ADR",price:"33.50",percentage:"0.57%"};
+dic.DHR={symbol:"DHR",name:"DANAHER CORP",price:"87.31",percentage:"0.80%"};
+dic.BUD={symbol:"BUD",name:"ANHEUSER-SPN ADR",price:"106.81",percentage:"0.75%"};
+dic.ABT={symbol:"ABT",name:"ABBOTT LABS",price:"45.63",percentage:"0.60%"};
+dic.HAL={symbol:"HAL",name:"HALLIBURTON CO",price:"50.89",percentage:"-0.78%"};
+dic.INTC={symbol:"INTC",name:"INTEL CORP",price:"35.82",percentage:"0.56%"};
+dic.AMZN={symbol:"AMZN",name:"AMAZON.COM INC",price:"853.00",percentage:"0.29%"};
+dic.DD={symbol:"DD",name:"DU PONT (EI)",price:"80.48",percentage:"0.89%"};
+dic.KHC={symbol:"KHC",name:"KRAFT HEINZ CO/T",price:"91.53",percentage:"0.69%"};
+dic.UL={symbol:"UL",name:"UNILEVER PLC-ADR",price:"48.62",percentage:"2.23%"};
+dic.INFY={symbol:"INFY",name:"INFOSYS LTD-ADR",price:"15.22",percentage:"1.67%"};
+dic.VOD={symbol:"VOD",name:"VODAFONE GRP-ADR",price:"25.19",percentage:"0.52%"};
+dic.MMM={symbol:"MMM",name:"3M CO",price:"189.90",percentage:"0.21%"};
+dic.FOX={symbol:"FOX",name:"TWENTY-FIRST - B",price:"30.08",percentage:"0.93%"};
+dic.HDB={symbol:"HDB",name:"HDFC BANK-ADR",price:"71.43",percentage:"0.70%"};
+dic.WBA={symbol:"WBA",name:"WALGREENS BOOTS",price:"85.31",percentage:"0.18%"};
+dic.LLY={symbol:"LLY",name:"ELI LILLY & CO",price:"84.55",percentage:"1.37%"};
+dic.RELX={symbol:"RELX",name:"RELX PLC - ADR",price:"19.04",percentage:"0.63%"};
+dic.EOG={symbol:"EOG",name:"EOG RESOURCES",price:"95.70",percentage:"0.92%"};
+dic.GSK={symbol:"GSK",name:"GLAXOSMITHKL-ADR",price:"41.45",percentage:"0.78%"};
+dic.WBK={symbol:"WBK",name:"WESTPAC BANK-ADR",price:"26.34",percentage:"1.15%"};
+dic.PUK={symbol:"PUK",name:"PRUDENTIAL-ADR",price:"40.24",percentage:"0.70%"};
+dic.LMT={symbol:"LMT",name:"LOCKHEED MARTIN",price:"268.68",percentage:"0.36%"};
+dic.CMCSA={symbol:"CMCSA",name:"COMCAST CORP-A",price:"37.38",percentage:"0.73%"};
+dic.EPD={symbol:"EPD",name:"ENTERPRISE PRODU",price:"27.60",percentage:"-0.43%"};
+dic.SLB={symbol:"SLB",name:"SCHLUMBERGER LTD",price:"78.70",percentage:"0.77%"};
+dic.KMI={symbol:"KMI",name:"KINDER MORGAN IN",price:"21.27",percentage:"-0.09%"};
+dic.TOT={symbol:"TOT",name:"TOTAL SA-SP ADR",price:"49.13",percentage:"1.18%"};
+dic.MDLZ={symbol:"MDLZ",name:"MONDELEZ INTER-A",price:"43.80",percentage:"1.53%"};
+dic.CELG={symbol:"CELG",name:"CELGENE CORP",price:"125.13",percentage:"1.70%"};
+dic.ASML={symbol:"ASML",name:"ASML HOLDING-NY",price:"121.25",percentage:"0.41%"};
+dic.SNP={symbol:"SNP",name:"CHINA PETRO-ADR",price:"75.81",percentage:"-1.10%"};
+dic.COP={symbol:"COP",name:"CONOCOPHILLIPS",price:"46.48",percentage:"1.24%"};
+dic.MCK={symbol:"MCK",name:"MCKESSON CORP",price:"149.47",percentage:"1.11%"};
+dic.ORAN={symbol:"ORAN",name:"ORANGE-SPON ADR",price:"15.45",percentage:"2.52%"};
+dic.GOOGL={symbol:"GOOGL",name:"ALPHABET INC-A",price:"857.84",percentage:"0.49%"};
+dic.NVS={symbol:"NVS",name:"NOVARTIS AG-ADR",price:"75.11",percentage:"1.14%"};
+dic.MTU={symbol:"MTU",name:"MITSUBISHI U-ADR",price:"6.64",percentage:"0.76%"};
+dic.OXY={symbol:"OXY",name:"OCCIDENTAL PETE",price:"62.50",percentage:"0.71%"};
+dic.UTX={symbol:"UTX",name:"UNITED TECH CORP",price:"111.93",percentage:"0.16%"};
+dic.NGG={symbol:"NGG",name:"NATIONAL GRI-ADR",price:"59.66",percentage:"0.24%"};
+dic.GIS={symbol:"GIS",name:"GENERAL MILLS IN",price:"60.63",percentage:"0.93%"};
+dic.SAP={symbol:"SAP",name:"SAP SE-SPONS ADR",price:"94.57",percentage:"0.41%"};
+dic.AVGO={symbol:"AVGO",name:"BROADCOM LTD",price:"222.01",percentage:"1.08%"};
+dic.IBM={symbol:"IBM",name:"IBM",price:"177.18",percentage:"-1.26%"};
+dic.SO={symbol:"SO",name:"SOUTHERN CO",price:"49.50",percentage:"-0.54%"};
+dic.TJX={symbol:"TJX",name:"TJX COS INC",price:"77.94",percentage:"-0.65%"};
+dic.UNP={symbol:"UNP",name:"UNION PAC CORP",price:"106.18",percentage:"-0.50%"};
+dic.GE={symbol:"GE",name:"GENERAL ELECTRIC",price:"29.66",percentage:"-0.47%"};
+dic.SNP={symbol:"SNP",name:"CHINA PETRO-ADR",price:"75.81",percentage:"-1.10%"};
+dic.NEE={symbol:"NEE",name:"NEXTERA ENERGY",price:"128.75",percentage:"-0.53%"};
+dic.MFG={symbol:"MFG",name:"MIZUHO FINAN-ADR",price:"3.70",percentage:"-0.54%"};
+dic.GILD={symbol:"GILD",name:"GILEAD SCIENCES",price:"67.87",percentage:"-1.88%"};
+dic.CHA={symbol:"CHA",name:"CHINA TELECO-ADR",price:"46.21",percentage:"0.26%"};
+dic.PTR={symbol:"PTR",name:"PETROCHINA -ADR",price:"73.69",percentage:"-0.55%"};
+dic.TEVA={symbol:"TEVA",name:"TEVA PHARM-ADR",price:"32.96",percentage:"0.40%"};
+dic.OXY={symbol:"OXY",name:"OCCIDENTAL PETE",price:"62.50",percentage:"0.71%"};
+dic.FOX={symbol:"FOX",name:"TWENTY-FIRST - B",price:"30.08",percentage:"0.93%"};
+dic.ORAN={symbol:"ORAN",name:"ORANGE-SPON ADR",price:"15.45",percentage:"2.52%"};
+
+
+
+var result = []
+
+for (var key in dic) {
+    var value = dic[key];
+    if (symbols.indexOf(key) > -1) {
+    result.push(value);
+	}
+    // Use `key` and `value`
+}
+//result.push(dict.STO);
+//dict.key2 = "value2";
+
+
+  return result;
+}
 
 
 module.exports = router;

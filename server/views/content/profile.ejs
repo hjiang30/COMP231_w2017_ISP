@@ -200,42 +200,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="active">
-                                        <td>GOOG</td>
-                                        <td>Google. inc</td>
-                                        <td>$500</td>
-                                        <td>13%</td>
-                                    </tr>
-                                    <tr class="success">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="warning">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="danger">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    <% for(var i=0; i < data.length; i++) { %>
+  					 <tr>
+    					 <td><%= data[i].symbol %></td>
+     					 <td><%= data[i].name %></td>
+					 <td><%= data[i].price %></td>
+					 <td><%= data[i].percentage %></td>
+   					</tr>
+					<% } %>
+                
                                     
                                 </tbody>
                             </table>
