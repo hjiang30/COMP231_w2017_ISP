@@ -7,6 +7,7 @@ var Client = require('node-rest-client').Client;
 let mongoose = require('mongoose');
 let passport = require('passport');
 var client = new Client();
+var plotly = require('plotly')("hjiang", "r9tQz4mMuPBW4q0IC3mx")
 
 
 // define the user model
@@ -181,13 +182,75 @@ res.render('content/profile',{
 
 
 router.post('/simulate',(req,res,next)=>{
-console.log("simulate called!");
-console.log(req.body.startDate);
-console.log(req.body.endDate);
-console.log(req.body.capital);
-console.log(req.body.position);
-console.log(req.body.weight);
-res.redirect('/profile');
+//console.log("simulate called!");
+//console.log(req.body.startDate);
+//console.log(req.body.endDate);
+//console.log(req.body.capital);
+//console.log(req.body.position);
+//console.log(req.body.weight);
+//res.redirect('/profile');
+
+var choice = ['f1'];
+
+//console.log(req.body.filter);
+
+var args = {
+    data: { 'f1':0,'f2':0,'f3':0,'f4':0},
+    headers: { "Content-Type": "application/json" }
+};
+
+if (choice.length>0)
+{
+        if(choice.indexOf('f1') > -1)
+         args["data"]['f1']=1;
+        if(choice.indexOf('f2') > -1)
+         args["data"]['f2']=1;
+         if(choice.indexOf('f3') > -1)
+         args["data"]['f3']=1;
+         if(choice.indexOf('f4') > -1)
+         args["data"]['f4']=1;
+
+
+
+}
+
+// 
+client.post("http://127.0.0.1:8080/select", args, function (data, response) {
+console.log(data);
+//var jsonContent = JSON.parse(data);
+//console.log(jsonContent);
+//console.log(jsonContent.length);
+
+var capital = parseFloat(req.body.capital);
+var position = parseFloat(req.body.position);
+var stock_capital = capital * position;
+var cash_capital = capital - stock_capital;
+console.log(data.length);
+var each_capital = stock_capital/data.length;
+var shares_dic = {}
+var prices_info = getPrices(data);
+
+var dates = ['2017-02-09', '2017-02-10', '2017-02-13', '2017-02-14', '2017-02-15', '2017-02-16', '2017-02-17', '2017-02-21', '2017-02-22', '2017-02-23', '2017-02-24', '2017-02-27', '2017-02-28', '2017-03-01', '2017-03-02', '2017-03-03', '2017-03-06', '2017-03-07', '2017-03-08', '2017-03-09', '2017-03-10', '2017-03-13', '2017-03-14', '2017-03-15', '2017-03-16', '2017-03-17', '2017-03-20', '2017-03-21', '2017-03-22', '2017-03-23', '2017-03-24', '2017-03-27', '2017-03-28', '2017-03-29', '2017-03-30', '2017-03-31', '2017-04-03', '2017-04-04', '2017-04-05', '2017-04-06', '2017-04-07', '2017-04-10'];
+
+for (var i = 0; i < data.length; i++) {
+    
+    
+}
+
+res.render('content/profile',{
+      title: "Profile",
+      //messages: req.flash('registerMessage'),
+      data:makeData(data),
+      displayName: req.user ? req.user.displayName : ''
+    });
+
+
+});
+
+
+
+
+
 
 });
 
@@ -209,6 +272,15 @@ res.redirect('/profile');
   // display(data);
 
 //});
+
+function getPrices(symbols)
+{
+var dic = {};
+
+
+
+}
+
 function makeData(symbols) {
 var dic = {};
 dic.STO={symbol:"STO",name:"STATOIL ASA-ADR",price:"16.93",percentage:"0.53%"};
