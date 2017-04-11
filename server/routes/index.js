@@ -228,14 +228,41 @@ var cash_capital = capital - stock_capital;
 console.log(data.length);
 var each_capital = stock_capital/data.length;
 var shares_dic = {}
-var prices_info = getPrices(data);
+var prices_info = getPrices();
 
 var dates = ['2017-02-09', '2017-02-10', '2017-02-13', '2017-02-14', '2017-02-15', '2017-02-16', '2017-02-17', '2017-02-21', '2017-02-22', '2017-02-23', '2017-02-24', '2017-02-27', '2017-02-28', '2017-03-01', '2017-03-02', '2017-03-03', '2017-03-06', '2017-03-07', '2017-03-08', '2017-03-09', '2017-03-10', '2017-03-13', '2017-03-14', '2017-03-15', '2017-03-16', '2017-03-17', '2017-03-20', '2017-03-21', '2017-03-22', '2017-03-23', '2017-03-24', '2017-03-27', '2017-03-28', '2017-03-29', '2017-03-30', '2017-03-31', '2017-04-03', '2017-04-04', '2017-04-05', '2017-04-06', '2017-04-07', '2017-04-10'];
 
+
+var short_dates = ['2017-03-10', '2017-03-13', '2017-03-14', '2017-03-15', '2017-03-16', '2017-03-17', '2017-03-20', '2017-03-21', '2017-03-22', '2017-03-23', '2017-03-24', '2017-03-27', '2017-03-28', '2017-03-29', '2017-03-30', '2017-03-31', '2017-04-03', '2017-04-04', '2017-04-05', '2017-04-06', '2017-04-07', '2017-04-10'];
 for (var i = 0; i < data.length; i++) {
+	var symbol = data[i];
+        console.log(symbol);
+        var price = prices_info[symbol]['2017-03-10'];
+        var share = parseInt(each_capital/price);
+	console.log(share);
+	shares_dic[symbol] = share;
     
     
 }
+
+var portfolio = []
+for(var i = 0;i<short_dates.length;i++)
+{
+	var stock_value = 0.0;
+	var today = short_dates[i];
+	for(var j = 0;j<data.length;j++)
+	{
+		var symbol = data[j];
+		var share =shares_dic[symbol];
+		var value = share * prices_info[symbol][today];
+		stock_value+=value;
+		
+	}
+	var total_value = cash_capital + stock_value;
+	portfolio.push({"date":today,"value":total_value})
+}
+
+console.log(portfolio);
 
 res.render('content/profile',{
       title: "Profile",
@@ -273,11 +300,13 @@ res.render('content/profile',{
 
 //});
 
-function getPrices(symbols)
+function getPrices()
 {
 var dic = {};
+dic.FOX={'2017-03-09':100.0,'2017-03-10':200.0,'2017-03-13':201.0}
+dic.ORAN={'2017-03-09':100.0,'2017-03-10':200.0,'2017-03-13':188.0}
 
-
+return dic;
 
 }
 
