@@ -249,7 +249,15 @@
                         <option value="2">Money Weighted</option>
                         </select>
                          <!--button type="button" class="btn btn-danger" onclick="document.getElementById("form2").submit()">Submit</button>-->
-			 <button value="Submit" onclick="document.getElementById("form2").submit()">simulate</button>
+  <% if( displayName == 'Guest' ) { %> 
+ <button value="Submit" onclick="" disabled>simulate</button>
+
+  <% } %> 
+ <% if( displayName != 'Guest' ) { %> 
+<button value="Submit" onclick="document.getElementById("form2").submit()">simulate</button>
+
+  <% } %> 
+			 
                          </div>
                           <!-- /.row -->
                           </div> 
